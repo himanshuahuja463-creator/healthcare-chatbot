@@ -1,0 +1,134 @@
+{
+  "intents": [
+
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Hey",
+        "Good morning",
+        "Good evening",
+        "What's up"
+      ],
+      "responses": [
+        "Hello! How can I help you today?",
+        "Hi there!",
+        "Hey! What can I do for you?"
+      ]
+    },
+
+    {
+      "tag": "symptoms",
+      "patterns": [
+        "I have fever",
+        "I have cough",
+        "Feeling sick",
+        "My body hurts",
+        "I have headache",
+        "I feel weak",
+        "I have cold"
+      ],
+      "responses": [
+        "Please rest properly and stay hydrated.",
+        "If symptoms continue, consult a doctor.",
+        "You should drink fluids and monitor your temperature."
+      ]
+    },
+
+    {
+      "tag": "diet",
+      "patterns": [
+        "Suggest healthy food",
+        "What should I eat",
+        "Healthy diet",
+        "Diet tips",
+        "Best food for health"
+      ],
+      "responses": [
+        "A balanced diet with fruits, vegetables, and protein is recommended.",
+        "Drink enough water and avoid excessive junk food.",
+        "Include fiber, protein, and vitamins in your meals."
+      ]
+    },
+
+    {
+      "tag": "exercise",
+      "patterns": [
+        "Workout tips",
+        "Exercise recommendation",
+        "How to stay fit",
+        "Gym advice",
+        "Fitness tips"
+      ],
+      "responses": [
+        "Regular exercise and proper sleep help maintain good health.",
+        "Cardio and strength training together are very effective.",
+        "Consistency is more important than intensity."
+      ]
+    },
+
+    {
+      "tag": "mental_health",
+      "patterns": [
+        "I feel stressed",
+        "I feel anxious",
+        "Mental health tips",
+        "I feel depressed",
+        "How to relax"
+      ],
+      "responses": [
+        "Taking breaks and talking to trusted people can help.",
+        "Meditation and proper sleep may reduce stress.",
+        "If stress becomes overwhelming, consider speaking with a professional."
+      ]
+    },
+
+    {
+      "tag": "appointment",
+      "patterns": [
+        "Book appointment",
+        "Doctor timing",
+        "Hospital timing",
+        "Can I see a doctor",
+        "Appointment info"
+      ],
+      "responses": [
+        "Appointments are available from 9 AM to 5 PM.",
+        "Please contact the hospital reception for booking.",
+        "Online appointments are available during working hours."
+      ]
+    },
+
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "Thanks a lot",
+        "Appreciate it"
+      ],
+      "responses": [
+        "You're welcome!",
+        "Glad I could help!",
+        "Happy to help!"
+      ]
+    },
+
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "Goodbye",
+        "See you later",
+        "Quit"
+      ],
+      "responses": [
+        "Goodbye!",
+        "Take care!",
+        "Stay healthy!"
+      ]
+    }
+
+  ]
+}
