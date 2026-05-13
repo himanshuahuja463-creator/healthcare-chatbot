@@ -38,7 +38,7 @@ def get_response(user_input):
 
     confidence = max(probabilities)
 
-    if confidence < 0.40:
+    if confidence < 0.15:
         return "I'm not sure I understood that. Can you rephrase?"
 
     tag = model.predict(X_test)[0]
