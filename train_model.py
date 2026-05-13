@@ -16,7 +16,7 @@ training_labels = []
 
 def preprocess(text):
 
-    words = nltk.word_tokenize(text.lower())
+    words = text.lower().split()
 
     words = [stemmer.stem(word) for word in words]
 
