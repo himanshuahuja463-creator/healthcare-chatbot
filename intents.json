@@ -239,7 +239,22 @@
         "I told my computer I needed a break, now it won't stop updating.",
         "Why was the math book sad? Because it had too many problems."
       ]
-    }
+    },
+{
+  "tag": "name",
+  "patterns": [
+    "What is your name",
+    "Who are you",
+    "Tell me your name",
+    "Your name",
+    "Are you Baymax"
+  ],
+  "responses": [
+    "I am Baymax, your personal AI healthcare assistant.",
+    "My name is Baymax. I'm here to help you.",
+    "You can call me Baymax."
+  ]
+}
 
   ]
 }
