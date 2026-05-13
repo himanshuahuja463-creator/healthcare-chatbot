@@ -128,6 +128,117 @@
         "Take care!",
         "Stay healthy!"
       ]
+    },
+
+    {
+      "tag": "motivation",
+      "patterns": [
+        "Motivate me",
+        "I feel lazy",
+        "Feeling low",
+        "I need motivation",
+        "I feel tired of everything"
+      ],
+      "responses": [
+        "Small progress every day creates big results.",
+        "Discipline matters more than motivation.",
+        "You are stronger than your temporary feelings."
+      ]
+    },
+
+    {
+      "tag": "fitness",
+      "patterns": [
+        "Gym tips",
+        "Workout advice",
+        "How to build muscle",
+        "Fitness tips",
+        "How to lose fat"
+      ],
+      "responses": [
+        "Consistency and diet are the keys to fitness.",
+        "Strength training and good sleep help muscle growth.",
+        "Progressive overload is important for building muscle."
+      ]
+    },
+
+    {
+      "tag": "coding",
+      "patterns": [
+        "Programming help",
+        "Python help",
+        "Coding advice",
+        "Debug my code",
+        "Help me learn coding"
+      ],
+      "responses": [
+        "Practice and projects are the fastest way to improve coding.",
+        "Debugging step-by-step solves most programming issues.",
+        "Building projects teaches more than only watching tutorials."
+      ]
+    },
+
+    {
+      "tag": "anime",
+      "patterns": [
+        "Recommend anime",
+        "Best anime",
+        "Anime suggestions",
+        "I like anime",
+        "Suggest an anime"
+      ],
+      "responses": [
+        "Attack on Titan and Death Note are excellent choices.",
+        "Fullmetal Alchemist Brotherhood is highly recommended.",
+        "Demon Slayer has amazing animation and action."
+      ]
+    },
+
+    {
+      "tag": "study",
+      "patterns": [
+        "Study tips",
+        "How to focus",
+        "Exam preparation",
+        "Help me study",
+        "How to concentrate"
+      ],
+      "responses": [
+        "Studying in focused sessions improves concentration.",
+        "Taking small breaks can improve memory retention.",
+        "Consistency works better than last-minute studying."
+      ]
+    },
+
+    {
+      "tag": "music",
+      "patterns": [
+        "Suggest songs",
+        "Music recommendation",
+        "Good music",
+        "Recommend music",
+        "What should I listen to"
+      ],
+      "responses": [
+        "You can try lo-fi, synthwave, or classical music while studying.",
+        "Music taste depends on mood, but relaxing playlists are always good.",
+        "Listening to music can improve focus and mood."
+      ]
+    },
+
+    {
+      "tag": "jokes",
+      "patterns": [
+        "Tell me a joke",
+        "Say something funny",
+        "Make me laugh",
+        "Funny joke"
+      ],
+      "responses": [
+        "Why do programmers prefer dark mode? Because light attracts bugs.",
+        "I told my computer I needed a break, now it won't stop updating.",
+        "Why was the math book sad? Because it had too many problems."
+      ]
     }
 
   ]
