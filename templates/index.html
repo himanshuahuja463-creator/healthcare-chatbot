@@ -1,71 +1,181 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Healthcare Chatbot</title>
+    <title>Healthcare AI Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
 <div class="chat-container">
-    <h1>Healthcare Chatbot</h1>
 
-    <div id="chatbox"></div>
+    <div class="header">
+        🤖 Healthcare AI Assistant
+    </div>
+
+    <div id="chatbox">
+
+        <div class="message bot-message">
+            <div class="avatar">🤖</div>
+
+            <div>
+                <div class="bubble bot-bubble">
+                    Hello! I'm your AI assistant. How can I help you today?
+                </div>
+
+                <div class="timestamp">
+                    Just now
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <div class="input-area">
-        <input type="text" id="userInput" placeholder="Type your message...">
-        <button onclick="sendMessage()">Send</button>
+        <input type="text" id="userInput" placeholder="Ask something...">
+
+        <button onclick="sendMessage()">
+            ➤
+        </button>
     </div>
+
 </div>
 
 <script>
+
+function getCurrentTime() {
+    const now = new Date();
+
+    return now.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+}
+
 function addMessage(message, sender) {
+
     let chatbox = document.getElementById("chatbox");
 
     let messageDiv = document.createElement("div");
     messageDiv.classList.add("message");
 
+    if(sender === "user") {
+        messageDiv.classList.add("user-message");
+    }
+    else {
+        messageDiv.classList.add("bot-message");
+    }
+
+    let avatar = document.createElement("div");
+    avatar.classList.add("avatar");
+
+    avatar.innerText = sender === "user" ? "🧑" : "🤖";
+
+    let content = document.createElement("div");
+
     let bubble = document.createElement("div");
     bubble.classList.add("bubble");
 
     if(sender === "user") {
-        messageDiv.classList.add("user-message");
         bubble.classList.add("user-bubble");
-    } else {
-        messageDiv.classList.add("bot-message");
+    }
+    else {
         bubble.classList.add("bot-bubble");
     }
 
     bubble.innerText = message;
 
-    messageDiv.appendChild(bubble);
+    let timestamp = document.createElement("div");
+    timestamp.classList.add("timestamp");
+    timestamp.innerText = getCurrentTime();
+
+    content.appendChild(bubble);
+    content.appendChild(timestamp);
+
+    messageDiv.appendChild(avatar);
+    messageDiv.appendChild(content);
+
     chatbox.appendChild(messageDiv);
 
     chatbox.scrollTop = chatbox.scrollHeight;
 }
 
+function showTypingAnimation() {
+
+    let chatbox = document.getElementById("chatbox");
+
+    let typingDiv = document.createElement("div");
+
+    typingDiv.classList.add("message", "bot-message");
+
+    typingDiv.id = "typing";
+
+    typingDiv.innerHTML = `
+        <div class="avatar">🤖</div>
+
+        <div class="bubble bot-bubble typing">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    `;
+
+    chatbox.appendChild(typingDiv);
+
+    chatbox.scrollTop = chatbox.scrollHeight;
+}
+
+function removeTypingAnimation() {
+
+    let typing = document.getElementById("typing");
+
+    if(typing) {
+        typing.remove();
+    }
+}
+
 function sendMessage() {
+
     let inputField = document.getElementById("userInput");
+
     let userText = inputField.value;
 
     if(userText.trim() === "") return;
 
     addMessage(userText, "user");
 
-    fetch(`/get?msg=${userText}`)
-    .then(response => response.json())
-    .then(data => {
-        addMessage(data.response, "bot");
-    });
-
     inputField.value = "";
+
+    showTypingAnimation();
+
+    fetch(`/get?msg=${userText}`)
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        setTimeout(() => {
+
+            removeTypingAnimation();
+
+            addMessage(data.response, "bot");
+
+        }, 1000);
+
+    });
 }
 
 document.getElementById("userInput")
+
 .addEventListener("keypress", function(event) {
+
     if(event.key === "Enter") {
+
         sendMessage();
     }
 });
+
 </script>
 
 </body>
