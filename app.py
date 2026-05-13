@@ -2,8 +2,12 @@ from flask import Flask, render_template, request, jsonify
 import json
 import pickle
 import random
+import nltk
+from nltk.stem import PorterStemmer
 
 app = Flask(__name__)
+
+stemmer = PorterStemmer()
 
 # Load model and vectorizer
 model = pickle.load(open('model.pkl', 'rb'))
@@ -13,9 +17,21 @@ vectorizer = pickle.load(open('vectorizer.pkl', 'rb'))
 with open('intents.json') as file:
     data = json.load(file)
 
+# Text preprocessing
+def preprocess(text):
+
+    words = nltk.word_tokenize(text.lower())
+
+    words = [stemmer.stem(word) for word in words]
+
+    return " ".join(words)
+
+# Get chatbot response
 def get_response(user_input):
 
-    X_test = vectorizer.transform([user_input])
+    processed_input = preprocess(user_input)
+
+    X_test = vectorizer.transform([processed_input])
 
     probabilities = model.predict_proba(X_test)[0]
 
@@ -27,20 +43,30 @@ def get_response(user_input):
     tag = model.predict(X_test)[0]
 
     for intent in data['intents']:
+
         if intent['tag'] == tag:
+
             return random.choice(intent['responses'])
 
     return "I don't understand."
 
+# Homepage
 @app.route("/")
 def home():
+
     return render_template("index.html")
 
+# Chat route
 @app.route("/get")
 def chatbot_response():
+
     user_text = request.args.get('msg')
+
     response = get_response(user_text)
+
     return jsonify({"response": response})
 
+# Run app
 if __name__ == "__main__":
+
     app.run(debug=True)
