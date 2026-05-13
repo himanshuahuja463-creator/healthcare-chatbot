@@ -276,4 +276,114 @@ button:hover{
         height:100vh;
         border-radius:0;
     }
+}/* Floating Particles */
+
+.particles{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:0;
+    overflow:hidden;
+}
+
+.particles::before,
+.particles::after{
+    content:'';
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:rgba(0,198,255,0.12);
+    animation:moveParticles 18s infinite alternate;
+    filter:blur(80px);
+}
+
+.particles::before{
+    top:10%;
+    left:5%;
+}
+
+.particles::after{
+    bottom:10%;
+    right:5%;
+    background:rgba(127,90,240,0.12);
+}
+
+@keyframes moveParticles{
+
+    from{
+        transform:translateY(0px) translateX(0px);
+    }
+
+    to{
+        transform:translateY(50px) translateX(50px);
+    }
+}
+
+/* Header Glow */
+
+.header{
+    position:relative;
+    overflow:hidden;
+}
+
+.header::after{
+    content:'';
+    position:absolute;
+    width:200%;
+    height:100%;
+    top:0;
+    left:-50%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.08),
+        transparent
+    );
+
+    animation:headerGlow 4s linear infinite;
+}
+
+@keyframes headerGlow{
+
+    from{
+        transform:translateX(-100%);
+    }
+
+    to{
+        transform:translateX(100%);
+    }
+}
+
+/* Floating Animation */
+
+.chat-container{
+    animation:
+        fadeIn 1s ease,
+        floating 5s ease-in-out infinite;
+}
+
+@keyframes floating{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* Glowing Bot Avatar */
+
+.bot-message .avatar{
+    box-shadow:
+        0 0 15px rgba(0,198,255,0.5),
+        0 0 30px rgba(0,198,255,0.2);
 }
