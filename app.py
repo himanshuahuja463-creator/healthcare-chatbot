@@ -14,7 +14,15 @@ with open('intents.json') as file:
     data = json.load(file)
 
 def get_response(user_input):
+
     X_test = vectorizer.transform([user_input])
+
+    probabilities = model.predict_proba(X_test)[0]
+
+    confidence = max(probabilities)
+
+    if confidence < 0.40:
+        return "I'm not sure I understood that. Can you rephrase?"
 
     tag = model.predict(X_test)[0]
 
