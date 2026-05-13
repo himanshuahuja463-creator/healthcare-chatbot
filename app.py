@@ -4,6 +4,7 @@ import pickle
 import random
 import nltk
 from nltk.stem import PorterStemmer
+nltk.download('punkt')
 
 app = Flask(__name__)
 
