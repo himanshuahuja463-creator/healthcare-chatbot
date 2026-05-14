@@ -15,6 +15,7 @@ body{
     overflow:hidden;
     background:#0f172a;
     position:relative;
+    transition:0.4s ease;
 }
 
 /* Animated Background Glow */
@@ -52,6 +53,8 @@ body::after{
     }
 }
 
+/* Chat Container */
+
 .chat-container{
     width:450px;
     height:720px;
@@ -67,12 +70,33 @@ body::after{
     box-shadow:
         0 8px 32px rgba(0,0,0,0.4),
         0 0 30px rgba(0,198,255,0.1);
-    animation:fadeIn 1s ease;
+
+    animation:
+        fadeIn 1s ease,
+        floating 5s ease-in-out infinite;
 }
+
+/* Floating Animation */
+
+@keyframes floating{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* Header */
 
 .header{
     padding:22px;
-    text-align:center;
     color:white;
     font-size:24px;
     font-weight:600;
@@ -81,9 +105,69 @@ body::after{
         rgba(255,255,255,0.08),
         rgba(255,255,255,0.02)
     );
+
     border-bottom:1px solid rgba(255,255,255,0.05);
+
     letter-spacing:0.5px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    position:relative;
+    overflow:hidden;
 }
+
+/* Header Glow */
+
+.header::after{
+    content:'';
+    position:absolute;
+    width:200%;
+    height:100%;
+    top:0;
+    left:-50%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.08),
+        transparent
+    );
+
+    animation:headerGlow 4s linear infinite;
+}
+
+@keyframes headerGlow{
+
+    from{
+        transform:translateX(-100%);
+    }
+
+    to{
+        transform:translateX(100%);
+    }
+}
+
+/* Theme Toggle */
+
+#themeToggle{
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,0.1);
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+    transition:0.3s ease;
+}
+
+#themeToggle:hover{
+    transform:scale(1.1);
+}
+
+/* Chatbox */
 
 #chatbox{
     flex:1;
@@ -103,6 +187,8 @@ body::after{
     border-radius:20px;
 }
 
+/* Messages */
+
 .message{
     display:flex;
     margin-bottom:18px;
@@ -117,6 +203,8 @@ body::after{
     justify-content:flex-start;
 }
 
+/* Avatars */
+
 .avatar{
     width:42px;
     height:42px;
@@ -130,11 +218,21 @@ body::after{
     box-shadow:0 0 10px rgba(255,255,255,0.08);
 }
 
+/* Glowing Bot Avatar */
+
+.bot-message .avatar{
+    box-shadow:
+        0 0 15px rgba(0,198,255,0.5),
+        0 0 30px rgba(0,198,255,0.2);
+}
+
 .user-message .avatar{
     order:2;
     margin-left:10px;
     margin-right:0;
 }
+
+/* Message Bubbles */
 
 .bubble{
     padding:14px 18px;
@@ -154,6 +252,7 @@ body::after{
     background:linear-gradient(135deg,#00c6ff,#0072ff);
     color:white;
     border-bottom-right-radius:5px;
+
     box-shadow:0 0 15px rgba(0,198,255,0.3);
 }
 
@@ -163,11 +262,15 @@ body::after{
     border-bottom-left-radius:5px;
 }
 
+/* Timestamp */
+
 .timestamp{
     font-size:11px;
     color:rgba(255,255,255,0.55);
     margin-top:5px;
 }
+
+/* Input Area */
 
 .input-area{
     display:flex;
@@ -175,6 +278,8 @@ body::after{
     background:rgba(255,255,255,0.04);
     border-top:1px solid rgba(255,255,255,0.05);
 }
+
+/* Input */
 
 input{
     flex:1;
@@ -197,6 +302,8 @@ input::placeholder{
     color:rgba(255,255,255,0.45);
 }
 
+/* Send Button */
+
 button{
     width:58px;
     margin-left:12px;
@@ -214,6 +321,8 @@ button:hover{
     transform:scale(1.08);
     box-shadow:0 0 25px rgba(0,198,255,0.6);
 }
+
+/* Typing Animation */
 
 .typing{
     display:flex;
@@ -241,17 +350,21 @@ button:hover{
         transform:translateY(0);
         opacity:0.5;
     }
+
     40%{
         transform:translateY(-8px);
         opacity:1;
     }
 }
 
+/* Animations */
+
 @keyframes slideUp{
     from{
         opacity:0;
         transform:translateY(10px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
@@ -263,20 +376,14 @@ button:hover{
         opacity:0;
         transform:scale(0.95);
     }
+
     to{
         opacity:1;
         transform:scale(1);
     }
 }
 
-@media(max-width:500px){
-
-    .chat-container{
-        width:100%;
-        height:100vh;
-        border-radius:0;
-    }
-}/* Floating Particles */
+/* Floating Particles */
 
 .particles{
     position:fixed;
@@ -322,68 +429,46 @@ button:hover{
     }
 }
 
-/* Header Glow */
+/* LIGHT MODE */
 
-.header{
-    position:relative;
-    overflow:hidden;
+body.light-mode{
+    background:#f1f5f9;
 }
 
-.header::after{
-    content:'';
-    position:absolute;
-    width:200%;
-    height:100%;
-    top:0;
-    left:-50%;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,0.08),
-        transparent
-    );
-
-    animation:headerGlow 4s linear infinite;
+body.light-mode .chat-container{
+    background:rgba(255,255,255,0.9);
+    color:black;
 }
 
-@keyframes headerGlow{
-
-    from{
-        transform:translateX(-100%);
-    }
-
-    to{
-        transform:translateX(100%);
-    }
+body.light-mode .header{
+    color:black;
 }
 
-/* Floating Animation */
-
-.chat-container{
-    animation:
-        fadeIn 1s ease,
-        floating 5s ease-in-out infinite;
+body.light-mode .bot-bubble{
+    background:#e2e8f0;
+    color:black;
 }
 
-@keyframes floating{
-
-    0%{
-        transform:translateY(0px);
-    }
-
-    50%{
-        transform:translateY(-6px);
-    }
-
-    100%{
-        transform:translateY(0px);
-    }
+body.light-mode input{
+    background:#e2e8f0;
+    color:black;
 }
 
-/* Glowing Bot Avatar */
+body.light-mode input::placeholder{
+    color:#555;
+}
 
-.bot-message .avatar{
-    box-shadow:
-        0 0 15px rgba(0,198,255,0.5),
-        0 0 30px rgba(0,198,255,0.2);
+body.light-mode .timestamp{
+    color:#666;
+}
+
+/* Mobile */
+
+@media(max-width:500px){
+
+    .chat-container{
+        width:100%;
+        height:100vh;
+        border-radius:0;
+    }
 }

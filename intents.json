@@ -230,9 +230,15 @@
       "tag": "jokes",
       "patterns": [
         "Tell me a joke",
+        "Tell joke",
         "Say something funny",
         "Make me laugh",
-        "Funny joke"
+        "Funny joke",
+        "Crack a joke",
+        "Joke",
+        "Funny",
+        "Can you tell me a joke",
+        "I want a joke"
       ],
       "responses": [
         "Why do programmers prefer dark mode? Because light attracts bugs.",
@@ -240,21 +246,42 @@
         "Why was the math book sad? Because it had too many problems."
       ]
     },
-{
-  "tag": "name",
-  "patterns": [
-    "What is your name",
-    "Who are you",
-    "Tell me your name",
-    "Your name",
-    "Are you Baymax"
-  ],
-  "responses": [
-    "I am Baymax, your personal AI healthcare assistant.",
-    "My name is Baymax. I'm here to help you.",
-    "You can call me Baymax."
-  ]
-}
+
+    {
+      "tag": "name",
+      "patterns": [
+        "What is your name",
+        "Who are you",
+        "Tell me your name",
+        "Your name",
+        "Are you Baymax"
+      ],
+      "responses": [
+        "I am Baymax, your personal AI healthcare assistant.",
+        "My name is Baymax. I'm here to help you.",
+        "You can call me Baymax."
+      ]
+    },
+
+    {
+      "tag": "how_are_you",
+      "patterns": [
+        "How are you",
+        "How are you Baymax",
+        "Are you okay",
+        "How do you feel",
+        "What's up Baymax",
+        "How are you doing",
+        "Are you fine"
+      ],
+      "responses": [
+        "I am functioning perfectly. Thank you for asking.",
+        "I am doing well. How are you today?",
+        "All systems are operational. I am fine.",
+        "I am great. Ready to help you.",
+        "I am feeling fantastic today."
+      ]
+    }
 
   ]
 }
